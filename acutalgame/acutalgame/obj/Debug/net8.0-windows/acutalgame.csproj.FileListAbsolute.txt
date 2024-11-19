@@ -1,0 +1,16 @@
+H:\acutalgame\acutalgame\bin\Debug\net8.0-windows\acutalgame.exe
+H:\acutalgame\acutalgame\bin\Debug\net8.0-windows\acutalgame.deps.json
+H:\acutalgame\acutalgame\bin\Debug\net8.0-windows\acutalgame.runtimeconfig.json
+H:\acutalgame\acutalgame\bin\Debug\net8.0-windows\acutalgame.dll
+H:\acutalgame\acutalgame\bin\Debug\net8.0-windows\acutalgame.pdb
+H:\acutalgame\acutalgame\obj\Debug\net8.0-windows\acutalgame.Form1.resources
+H:\acutalgame\acutalgame\obj\Debug\net8.0-windows\acutalgame.csproj.GenerateResource.cache
+H:\acutalgame\acutalgame\obj\Debug\net8.0-windows\acutalgame.GeneratedMSBuildEditorConfig.editorconfig
+H:\acutalgame\acutalgame\obj\Debug\net8.0-windows\acutalgame.AssemblyInfoInputs.cache
+H:\acutalgame\acutalgame\obj\Debug\net8.0-windows\acutalgame.AssemblyInfo.cs
+H:\acutalgame\acutalgame\obj\Debug\net8.0-windows\acutalgame.csproj.CoreCompileInputs.cache
+H:\acutalgame\acutalgame\obj\Debug\net8.0-windows\acutalgame.dll
+H:\acutalgame\acutalgame\obj\Debug\net8.0-windows\refint\acutalgame.dll
+H:\acutalgame\acutalgame\obj\Debug\net8.0-windows\acutalgame.pdb
+H:\acutalgame\acutalgame\obj\Debug\net8.0-windows\acutalgame.genruntimeconfig.cache
+H:\acutalgame\acutalgame\obj\Debug\net8.0-windows\ref\acutalgame.dll

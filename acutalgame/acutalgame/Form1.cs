@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Windows.Forms.ComponentModel.Com2Interop;
 namespace acutalgame
 {
     public partial class Form1 : Form
@@ -7,30 +8,44 @@ namespace acutalgame
 
         public Color playerColor = Color.Black;
 
+        public int playerblackscore = 0;
+
+        List<Button> buttoncity = new List<Button>();
+
+        public int playerredscore = 0;
+        void playerscores()
+        {
+            if (playerblackscore == 12) 
+            {
+                
+            }
+            if (playerredscore == 12)
+            {
+
+            }
+        }
         void turnchange()
         {
+            
             if (player == "Black")
             {
                 player = "Red";
                 playerColor = Color.Red;
+                label3.Text = "Red";
             }
             else
             {
                 player = "Black";
                 playerColor = Color.Black;
+                label3.Text = "black";
             }
-        }
-        void buttonarray()
-        {
-            int[,] buttons = new int[10, 8];
-            { { } }
         }
         Button selected = null;
         public Form1()
         {
             InitializeComponent();
             SetupForm();
-
+            
 
 
 
@@ -40,7 +55,6 @@ namespace acutalgame
         {
             // moving players around 
             Button b = sender as Button;
-            Debug.WriteLine(b.BackColor);
             if (selected == null)
             {
                 if (b.BackColor == playerColor)
@@ -51,7 +65,7 @@ namespace acutalgame
                 return;
             }
 
-            if (b.BackColor == Color.White)
+            if (b.BackColor == Color.PaleGreen)
             {
                 Color temp = b.BackColor;
                 b.BackColor = selected.BackColor;
@@ -64,7 +78,9 @@ namespace acutalgame
 
         void SetupForm()
         {
-
+            //creates all the buttons and adds the buttons to a list 
+            int[,] buttontown = new int[8, 8];
+            int buttonnum = 0;
             int x = 0;
             int y = 0;
             int p = 0;
@@ -78,8 +94,10 @@ namespace acutalgame
                     button.Click += Move;
                     button.Size = new Size(panel1.Width / 8, panel1.Height / 8);
                     button.Location = new Point(x, y);
+                    button.Name = buttonnum.ToString();
                     panel1.Controls.Add(button);
                     x = x + (panel1.Width / 8);
+                    buttoncity.Add(button);
                     if (p == 0)
                     {
                         button.BackColor = Color.Black;
@@ -90,7 +108,9 @@ namespace acutalgame
                         button.BackColor = Color.White;
                         p = 0;
                     }
+                    buttonnum++;
                 }
+                buttonnum++;
                 x = 0;
                 y = y + (panel1.Height / 8);
                 if (p == 1)
@@ -114,8 +134,28 @@ namespace acutalgame
                     button.Location = new Point(x, y);
                     button.BackColor = Color.White;
                     panel1.Controls.Add(button);
+                    button.Name = buttonnum.ToString();
                     x = x + (panel1.Width / 8);
-
+                    buttoncity.Add(button);
+                    if (p == 1)
+                    {
+                        button.BackColor = Color.PaleGreen;
+                        p = 0;
+                    }
+                    else if (p == 0)
+                    {
+                        button.BackColor = Color.White;
+                        p = 1;
+                    }
+                    buttonnum++;
+                }
+                if (p == 1)
+                {
+                    p = 0;
+                }
+                else
+                {
+                    p = 1;
                 }
                 x = 0;
                 y = y + (panel1.Height / 8);
@@ -128,8 +168,10 @@ namespace acutalgame
                     button.Click += Move;
                     button.Size = new Size(panel1.Width / 8, panel1.Height / 8);
                     button.Location = new Point(x, y);
+                    button.Name = buttonnum.ToString();
                     panel1.Controls.Add(button);
                     x = x + (panel1.Width / 8);
+                    buttoncity.Add(button);
                     if (p == 1)
                     {
                         button.BackColor = Color.Red;
@@ -140,6 +182,7 @@ namespace acutalgame
                         button.BackColor = Color.White;
                         p = 1;
                     }
+                    buttonnum++;
                 }
                 x = 0;
                 y = y + (panel1.Height / 8);
@@ -152,11 +195,11 @@ namespace acutalgame
                     p = 1;
                 }
             }
-            label1.Text = "player 1 score:";
-            label2.Text = "player 2 score:";
-        
-        
-        
+            buttonnum= 0;
+            label1.Text = "player 1 score: " + playerredscore;
+            label2.Text = "player 2 score: " + playerblackscore;
+            label3.Text = "black";
+            
         }
 
         

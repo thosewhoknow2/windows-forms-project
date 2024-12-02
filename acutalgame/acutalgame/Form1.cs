@@ -12,6 +12,8 @@ namespace acutalgame
 
         List<Button> buttoncity = new List<Button>();
 
+        public int[] buttontown = new int[100];
+
         public int playerredscore = 0;
         void playerscores()
         {
@@ -55,35 +57,94 @@ namespace acutalgame
         {
             // moving players around 
             Button b = sender as Button;
-            if (selected == null)
+            if (player == "Black")
             {
-                if (b.BackColor == playerColor)
+                if (selected == null)
                 {
-                    selected = sender as Button;
+                    if (b.BackColor == playerColor)
+                    {
+                        selected = sender as Button;
+                        return;
+                    }
                     return;
                 }
-                return;
-            }
 
-            if (b.BackColor == Color.PaleGreen)
+                if (int.Parse(b.Name) == int.Parse(selected.Name) + 7)
+                { 
+                    if (b.BackColor == Color.PaleGreen)
+                    {
+                        Color temp = b.BackColor;
+                        b.BackColor = selected.BackColor;
+                        selected.BackColor = temp;
+                        selected = null;
+                        turnchange();
+                    }
+                }
+                else
+                {
+                    if (int.Parse(b.Name) == int.Parse(selected.Name) + 9)
+                    {
+                        if (b.BackColor == Color.PaleGreen)
+                        {
+                            Color temp = b.BackColor;
+                            b.BackColor = selected.BackColor;
+                            selected.BackColor = temp;
+                            selected = null;
+                            turnchange();
+                        }
+                    }
+                }
+                
+                
+            }
+            if (player == "Red")
             {
-                Color temp = b.BackColor;
-                b.BackColor = selected.BackColor;
-                selected.BackColor = temp;
-                selected = null;
-                turnchange();
+                if (selected == null)
+                {
+                    if (b.BackColor == playerColor)
+                    {
+                        selected = sender as Button;
+                        return;
+                    }
+                    return;
+                }
+                if (int.Parse(b.Name) == int.Parse(selected.Name) - 7)
+                {
+                    if (b.BackColor == Color.PaleGreen)
+                    {
+                        Color temp = b.BackColor;
+                        b.BackColor = selected.BackColor;
+                        selected.BackColor = temp;
+                        selected = null;
+                        turnchange();
+                    }
+                }
+                else
+                {
+                    if (int.Parse(b.Name) == int.Parse(selected.Name) - 9)
+                    {
+                        if (b.BackColor == Color.PaleGreen)
+                        {
+                            Color temp = b.BackColor;
+                            b.BackColor = selected.BackColor;
+                            selected.BackColor = temp;
+                            selected = null;
+                            turnchange();
+                        }
+                    }
+                }
             }
-
         }
 
         void SetupForm()
         {
             //creates all the buttons and adds the buttons to a list 
-            int[,] buttontown = new int[8, 8];
             int buttonnum = 0;
             int x = 0;
             int y = 0;
             int p = 0;
+            int row = 0;
+            int colum = 0;
             for (int i = 0; i < 3; i++)
 
             {
@@ -95,6 +156,7 @@ namespace acutalgame
                     button.Size = new Size(panel1.Width / 8, panel1.Height / 8);
                     button.Location = new Point(x, y);
                     button.Name = buttonnum.ToString();
+                    buttontown[buttonnum] = int.Parse(button.Name);
                     panel1.Controls.Add(button);
                     x = x + (panel1.Width / 8);
                     buttoncity.Add(button);
@@ -110,7 +172,7 @@ namespace acutalgame
                     }
                     buttonnum++;
                 }
-                buttonnum++;
+               
                 x = 0;
                 y = y + (panel1.Height / 8);
                 if (p == 1)
@@ -135,6 +197,7 @@ namespace acutalgame
                     button.BackColor = Color.White;
                     panel1.Controls.Add(button);
                     button.Name = buttonnum.ToString();
+                    buttontown[buttonnum] = int.Parse(button.Name);
                     x = x + (panel1.Width / 8);
                     buttoncity.Add(button);
                     if (p == 1)
@@ -169,6 +232,7 @@ namespace acutalgame
                     button.Size = new Size(panel1.Width / 8, panel1.Height / 8);
                     button.Location = new Point(x, y);
                     button.Name = buttonnum.ToString();
+                    buttontown[buttonnum] = int.Parse(button.Name);
                     panel1.Controls.Add(button);
                     x = x + (panel1.Width / 8);
                     buttoncity.Add(button);
@@ -195,12 +259,18 @@ namespace acutalgame
                     p = 1;
                 }
             }
-            buttonnum= 0;
+            
             label1.Text = "player 1 score: " + playerredscore;
             label2.Text = "player 2 score: " + playerblackscore;
             label3.Text = "black";
+
+            foreach (int a in buttontown)
+            {
+                label3.Text += a + ", ";
+            }
             
         }
+        
 
         
     }
